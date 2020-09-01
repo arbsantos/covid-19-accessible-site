@@ -49,11 +49,22 @@ body {
 }
 
 .footer {
-    padding: 3em 0;
-    background-color: #015b46;
+    padding: 1.5em 0;
+    background-color: #343a40;
     color: #fff;
 }
 
+.address {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.link {
+    color: #fff;
+    margin-left: 1em;
+    margin-right: 1em;
+}
 
 /* Text meant only for screen readers. */
 .skip {
