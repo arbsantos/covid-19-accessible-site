@@ -1,0 +1,90 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    background-color: #343a40;
+    color: #fff;
+    padding: 1em 0;
+}
+
+.nav_title {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-right: auto;
+}
+.header__layout {
+    display: flex;
+}
+
+.main-navigation__list {
+    display: flex;
+    margin-right: 1em;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.main-navigation__link {
+    color: #fff;
+}
+
+
+.contain {
+    width: 95%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+
+.main {
+    display: flex;
+    margin: auto;
+}
+
+.data{
+    padding-left: 1.5em;
+}
+
+.footer {
+    padding: 3em 0;
+    background-color: #015b46;
+    color: #fff;
+}
+
+
+/* Text meant only for screen readers. */
+.skip {
+    clip: rect(1px, 1px, 1px, 1px);
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    word-wrap: normal !important; /* Many screen reader and browser combinations announce broken words as they would appear visually. */
+}
+
+.skip:focus {
+    background-color: #fff;
+    border-radius: 3px;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+    clip: auto !important;
+    color: #888;
+    display: block;
+    font-weight: bold;
+    height: auto;
+    left: 5px;
+    line-height: normal;
+    padding: 15px 23px 14px;
+    text-decoration: none;
+    top: 5px;
+    width: auto;
+    z-index: 100000;
+}
+
+
+.search {
+    background-color: lightgray;
+    padding: 1em 0 3em;
+}

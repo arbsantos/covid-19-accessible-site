@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ponto de Situação Atual em Portugal</title>
+    <link rel="stylesheet" href="/static/stylesheets/main.css">
+</head>
+<body>
+   <div class="header">
+      <!-- <div class="hide_me">
+         <div class="hidden-navigation">
+               <ul class="main-navigation__list">
+                  <li class="main-navigation__list"><a class="main-navigation__link" href="#globais">Ir para informação global</a></li>
+                  <li class="main-navigation__list"><a class="main-navigation__link" href="#regionais">Ir para informação por região de saúde</a></li>
+                  <li class="main-navigation__list"><a class="main-navigation__link" href="#concelhos">Ir para informação por concelho</a></li>
+               </ul>
+         </div>
+      </div> -->
+
+      <div class="contain header__layout">
+         <div class="nav_title">Ponto de Situação Atual em Portugal</div>
+         <div class="main-navigation">
+               <ul class="main-navigation__list">
+                  <li class="main-navigation__list"><a class="main-navigation__link" aria-label="Ir para informação global" href="/">Dados globais</a></li>
+                  <li class="main-navigation__list"><a class="main-navigation__link" aria-label="Ir para informação por região de saúde" href="/regional">Dados regionais</a></li>
+                  <li class="main-navigation__list"><a class="main-navigation__link" aria-label="Ir para informação por concelho" href="#concelho">Dados por concelho</a></li>
+               </ul>
+         </div>
+      </div>
+    </div>
+    <div class="main">
+      <div class="contain">
+         <div class="concelho">
+            <h2>Dados por concelho</h2>
+            <div>
+               {{ with .Concelhos.Features }}
+                  {{ range . }}
+                     <h4 style="margin-block-end: 0em">{{ .Attributes.Concelho }}</h4>
+                     <div class="data">
+                        <p>
+                           <div class="confirmados">Casos confirmados {{ .Attributes.ConfirmadosAcumuladoConc }}</div>
+                        </p>
+                        <p>
+                           <div class="novos">Casos novos {{ .Attributes.ConfirmadosNovosConc }}</div>
+                        </p>
+                        <p>
+                           <div class="novos">Última atualização {{ .Attributes.DataParsed }}</div>
+                        </p>
+                     </div>
+                  {{ end }}
+               {{ end }}
+            </div>
+         </div>
+      </div>
+    </div>
+
+    <div class="footer">
+        <div class="contain">
+            <div class="address">
+                Tech & People<br>
+                LASIGE <br>
+                FCUL
+            </div>
+        </div>
+    </div>
+</body>
+</html>

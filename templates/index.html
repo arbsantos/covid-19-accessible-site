@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ponto de Situação Atual em Portugal</title>
+    <link rel="stylesheet" href="/static/stylesheets/main.css">
+</head>
+<body>
+   <div class="header">
+      <!-- <div class="hide_me">
+         <div class="hidden-navigation">
+               <ul class="main-navigation__list">
+                  <li class="main-navigation__list"><a class="main-navigation__link" href="#globais">Ir para informação global</a></li>
+                  <li class="main-navigation__list"><a class="main-navigation__link" href="#regionais">Ir para informação por região de saúde</a></li>
+                  <li class="main-navigation__list"><a class="main-navigation__link" href="#concelhos">Ir para informação por concelho</a></li>
+               </ul>
+         </div>
+      </div> -->
+
+      <div class="contain header__layout">
+         <div class="nav_title">Ponto de Situação Atual em Portugal</div>
+         <div class="main-navigation">
+               <ul class="main-navigation__list">
+                  <li class="main-navigation__list"><a class="main-navigation__link" aria-label="Ir para informação global" href="#globais">Dados globais</a></li>
+                  <li class="main-navigation__list"><a class="main-navigation__link" aria-label="Ir para informação por região de saúde" href="/regional/">Dados regionais</a></li>
+                  <li class="main-navigation__list"><a class="main-navigation__link" aria-label="Ir para informação por concelho" href="/concelho/">Dados por concelho</a></li>
+               </ul>
+         </div>
+      </div>
+    </div>
+    <div class="main">
+      <div class="contain">
+         <h2>Dados globais</h2>
+         <div id="globais" class="data">
+            <!-- <p>
+               <div>Casos ativos {{.Covid.Ativos}}</div>
+            </p>
+            <p>
+               <div>Casos recuperados {{.Covid.Recuperados}}</div>
+            </p>
+            <p>
+               <div>Óbitos {{.Covid.Obitos}}</div>
+            </p>
+            <p>
+               <div>Casos confirmados {{.Covid.Confirmados}}</div>
+            </p>
+            <p>
+               <div>Dados relativos ao boletim da DGS de {{.Covid.DataDados}}</div>
+            </p> -->
+            <p>
+               <div>Casos ativos {{.Covid2.Active}}</div>
+            </p>
+            <p>
+               <div>Casos recuperados {{.Covid2.Recovered}}</div>
+            </p>
+            <p>
+               <div>Óbitos {{.Covid2.Deaths}}</div>
+            </p>
+            <p>
+               <div>Casos confirmados {{.Covid2.Cases}}</div>
+            </p>
+            <p>
+               <div>Novos casos {{.Covid2.TodayCases}}</div>
+            </p>
+            <p>
+               <div>Novos recuperados {{.Covid2.TodayRecovered}}</div>
+            </p>
+            <p>
+               <div>Novos óbitos {{.Covid2.TodayDeaths}}</div>
+            </p>
+            <p>
+               <div>Testes realizados {{.Covid2.Tests}}</div>
+            </p>
+            <p>
+               <div>Número de casos sob vigilância pelas autoridades de saúde {{.Covid.Vigilancia}}</div>
+            </p>
+            <p>
+               <div>Número de pacientes COVID-19 internados em Unidades de Cuidados Intensivos {{.Covid.Internados}}</div>
+            </p>
+            <p>
+               <div>Casos ativos por milhão de habitantes {{.Covid2.ActivePerOneMillion}}</div>
+            </p>
+            <p>
+               <div>Casos recuperados por milhão de habitantes {{.Covid2.RecoveredPerOneMillion}}</div>
+            </p>
+            <p>
+               <div>Óbitos por milhão de habitantes {{.Covid2.DeathsPerOneMillion}}</div>
+            </p>
+            <p>
+               <div>Casos confrimados por milhão de habitantes {{.Covid2.CasesPerOneMillion}}</div>
+            </p>
+            <p>
+               <div>Testes realizados por milhão de habitantes {{.Covid2.TestsPerOneMillion}}</div>
+            </p>
+            <p>
+               <div>Dados relativos ao boletim da DGS de {{.Covid2.UpdatedParsed}}</div>
+            </p>
+         </div>
+         <h2>Dados detalhados</h2>
+         <div id="detalhados" class="data">
+            <p>
+               <div>Número total de confirmados do sexo feminino {{.Covid.ConfirmadosF}}</div>
+            </p>
+            <p>
+               <div>Número total de confirmados do sexo masculino {{.Covid.ConfirmadosM}}</div>
+            </p>
+            <p>
+               <div>Número de casos confirmados do sexo feminino na faixa etária 0-9 anos {{.Covid.Confirmados09f}}</div>
+               <div>Número de casos confirmados do sexo feminino na faixa etária 10-19 anos {{.Covid.Confirmados1019f}}</div>
+               <div>Número de casos confirmados do sexo feminino na faixa etária 20-29 anos {{.Covid.Confirmados2029f}}</div>
+               <div>Número de casos confirmados do sexo feminino na faixa etária 30-39 anos{{.Covid.Confirmados3039f}}</div>
+               <div>Número de casos confirmados do sexo feminino na faixa etária 40-49 anos {{.Covid.Confirmados4049f}}</div>
+               <div>Número de casos confirmados do sexo feminino na faixa etária 50-59 anos {{.Covid.Confirmados5059f}}</div>
+               <div>Número de casos confirmados do sexo feminino na faixa etária 60-69 anos {{.Covid.Confirmados6069f}}</div>
+               <div>Número de casos confirmados do sexo feminino na faixa etária 70-79 anos {{.Covid.Confirmados7079f}}</div>
+               <div>Número de casos confirmados do sexo feminino na faixa etária 80+ anos {{.Covid.Confirmados80Plusf}}</div>
+            </p>
+            <p>
+               <div>Número de casos confirmados do sexo masculino na faixa etária 0-9 anos {{.Covid.Confirmados09m}}</div>
+               <div>Número de casos confirmados do sexo masculino na faixa etária 10-19 anos {{.Covid.Confirmados1019m}}</div>
+               <div>Número de casos confirmados do sexo masculino na faixa etária 20-29 anos {{.Covid.Confirmados2029m}}</div>
+               <div>Número de casos confirmados do sexo masculino na faixa etária 30-39 anos {{.Covid.Confirmados3039m}}</div>
+               <div>Número de casos confirmados do sexo masculino na faixa etária 40-49 anos {{.Covid.Confirmados4049m}}</div>
+               <div>Número de casos confirmados do sexo masculino na faixa etária 50-59 anos {{.Covid.Confirmados5059m}}</div>
+               <div>Número de casos confirmados do sexo masculino na faixa etária 60-69 anos {{.Covid.Confirmados6069m}}</div>
+               <div>Número de casos confirmados do sexo masculino na faixa etária 70-79 anos {{.Covid.Confirmados7079m}}</div>
+               <div>Número de casos confirmados do sexo masculino na faixa etária 80+ anos {{.Covid.Confirmados80Plusm}}</div>
+            </p>
+            <p>
+               <div>Número total de óbitos de pacientes do sexo feminino {{.Covid.ObitosF}}</div>
+            </p>
+            <p>
+               <div>Número total de óbitos de pacientes do sexo masculino {{.Covid.ObitosM}}</div>
+            </p>
+            <p>
+               <div>Número total de óbitos de pacientes do sexo feminino na faixa etária 0-9 anos {{.Covid.Obitos09f}}</div>
+               <div>Número total de óbitos de pacientes do sexo feminino na faixa etária 10-19 anos {{.Covid.Obitos1019f}}</div>
+               <div>Número total de óbitos de pacientes do sexo feminino na faixa etária 20-29 anos {{.Covid.Obitos2029f}}</div>
+               <div>Número total de óbitos de pacientes do sexo feminino na faixa etária 30-39 anos{{.Covid.Obitos3039f}}</div>
+               <div>Número total de óbitos de pacientes do sexo feminino na faixa etária 40-49 anos {{.Covid.Obitos4049f}}</div>
+               <div>Número total de óbitos de pacientes do sexo feminino na faixa etária 50-59 anos {{.Covid.Obitos5059f}}</div>
+               <div>Número total de óbitos de pacientes do sexo feminino na faixa etária 60-69 anos {{.Covid.Obitos6069f}}</div>
+               <div>Número total de óbitos de pacientes do sexo feminino na faixa etária 70-79 anos {{.Covid.Obitos7079f}}</div>
+               <div>Número total de óbitos de pacientes do sexo feminino na faixa etária 80+ anos {{.Covid.Obitos80Plusf}}</div>
+            </p>
+            <p>
+               <div>Número total de óbitos de pacientes do sexo masculino na faixa etária 0-9 anos {{.Covid.Obitos09m}}</div>
+               <div>Número total de óbitos de pacientes do sexo masculino na faixa etária 10-19 anos {{.Covid.Obitos1019m}}</div>
+               <div>Número total de óbitos de pacientes do sexo masculino na faixa etária 20-29 anos {{.Covid.Obitos2029m}}</div>
+               <div>Número total de óbitos de pacientes do sexo masculino na faixa etária 30-39 anos {{.Covid.Obitos3039m}}</div>
+               <div>Número total de óbitos de pacientes do sexo masculino na faixa etária 40-49 anos {{.Covid.Obitos4049m}}</div>
+               <div>Número total de óbitos de pacientes do sexo masculino na faixa etária 50-59 anos {{.Covid.Obitos5059m}}</div>
+               <div>Número total de óbitos de pacientes do sexo masculino na faixa etária 60-69 anos {{.Covid.Obitos6069m}}</div>
+               <div>Número total de óbitos de pacientes do sexo masculino na faixa etária 70-79 anos {{.Covid.Obitos7079m}}</div>
+               <div>Número total de óbitos de pacientes do sexo masculino na faixa etária 80+ anos {{.Covid.Obitos80Plusm}}</div>
+            </p>
+            <p>
+               <div>Percentagem de casos infetados que reportaram o sintoma Tosse. {{.Covid.SintomasTosse}}</div>
+               <div>Percentagem de casos infetados que reportaram o sintoma Febre. {{.Covid.SintomasFebre}}</div>
+               <div>Percentagem de casos infetados que reportaram o sintoma Dificuldades respiratórias. {{.Covid.SintomasDificuldadeRespiratoria}}</div>
+               <div>Percentagem de casos infetados que reportaram o sintoma Cefaleias. {{.Covid.SintomasCefaleia}}</div>
+               <div>Percentagem de casos infetados que reportaram o sintoma Dores musculares. {{.Covid.SintomasDoresMusculares}}</div>
+               <div>Percentagem de casos infetados que reportaram o sintoma Fraqueza generalizada. {{.Covid.SintomasFraquezaGeneralizada}}</div>
+               <div>Nota: conforme informa a DGS, estes dados são relativos apenas a uma %, não-especificada e variável, dos infectados.</div>
+            </p>
+         </div>
+      </div>
+    </div>
+
+    <div class="footer">
+        <div class="contain">
+            <div class="address">
+                Tech & People<br>
+                LASIGE <br>
+                FCUL
+            </div>
+        </div>
+    </div>
+</body>
+</html>
