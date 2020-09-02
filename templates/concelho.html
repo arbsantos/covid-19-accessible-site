@@ -9,46 +9,66 @@
 </head>
 <body>
    <div class="header">
-      <!-- <div class="hide_me">
-         <div class="hidden-navigation">
-               <ul class="main-navigation__list">
-                  <li class="main-navigation__list"><a class="main-navigation__link" href="#globais">Ir para informação global</a></li>
-                  <li class="main-navigation__list"><a class="main-navigation__link" href="#regionais">Ir para informação por região de saúde</a></li>
-                  <li class="main-navigation__list"><a class="main-navigation__link" href="#concelhos">Ir para informação por concelho</a></li>
-               </ul>
-         </div>
-      </div> -->
-
       <div class="contain header__layout">
-         <div class="nav_title">Ponto de Situação Atual em Portugal</div>
-         <div class="main-navigation">
+         <div class="nav_title">Ponto de Situação</div>
+         <nav class="main-navigation">
                <ul class="main-navigation__list">
+                  <li class="main-navigation__list hidden__nav"><a class="skip" aria-label="Ir para o índice de navegação" href="#index__container" ></a></li>
+                  <li class="main-navigation__list hidden__nav"><a class="skip" aria-label="Ir para o início do conteúdo" href="#concelho" ></a></li>
                   <li class="main-navigation__list"><a class="main-navigation__link" aria-label="Ir para informação global" href="/">Dados globais</a></li>
                   <li class="main-navigation__list"><a class="main-navigation__link" aria-label="Ir para informação por região de saúde" href="/regional">Dados regionais</a></li>
-                  <li class="main-navigation__list"><a class="main-navigation__link" aria-label="Ir para informação por concelho" href="#concelho">Dados por concelho</a></li>
+                  <li class="main-navigation__list"><a class="main-navigation__link current" aria-label="Ir para informação por concelho" href="#concelho" aria-current="page">Dados por concelho</a></li>
                </ul>
-         </div>
+         </nav>
       </div>
     </div>
     <div class="main">
       <div class="contain">
-         <div class="concelho">
+         <div id="index__container" aria-labelledby="index-label">
+            <span id="index-label">Índice de navegação</span>
+            <ul id="index">
+               <li><a href="#concelho-A">A</a></li>
+               <li><a href="#concelho-B">B</a></li>
+               <li><a href="#concelho-C">C</a></li>
+               <li><a href="#concelho-E">E</a></li>
+               <li><a href="#concelho-F">F</a></li>
+               <li><a href="#concelho-G">G</a></li>
+               <li><a href="#concelho-H">H</a></li>
+               <li><a href="#concelho-I">I</a></li>
+               <li><a href="#concelho-L">L</a></li>
+               <li><a href="#concelho-M">M</a></li>
+               <li><a href="#concelho-N">N</a></li>
+               <li><a href="#concelho-O">O</a></li>
+               <li><a href="#concelho-P">P</a></li>
+               <li><a href="#concelho-R">R</a></li>
+               <li><a href="#concelho-S">S</a></li>
+               <li><a href="#concelho-T">T</a></li>
+               <li><a href="#concelho-V">V</a></li>
+             </ul>
+          </div>
+         <div id="concelho">
             <h2>Dados por concelho</h2>
             <div>
                {{ with .Concelhos.Features }}
                   {{ range . }}
-                     <h4 style="margin-block-end: 0em">{{ .Attributes.Concelho }}</h4>
-                     <div class="data">
-                        <p>
-                           <div class="confirmados">Casos confirmados {{ .Attributes.ConfirmadosAcumuladoConc }}</div>
-                        </p>
-                        <p>
-                           <div class="novos">Casos novos {{ .Attributes.ConfirmadosNovosConc }}</div>
-                        </p>
-                        <p>
-                           <div class="novos">Última atualização {{ .Attributes.DataParsed }}</div>
-                        </p>
-                     </div>
+                     {{if .Attributes.Ancora}}
+                        <section id="{{ .Attributes.AncoraID }}" aria-labelledby="{{ .Attributes.Concelho }}">
+                     {{else}}
+                        <section aria-labelledby="{{ .Attributes.Concelho }}">
+                     {{end}}
+                        <h4 id="{{ .Attributes.Concelho }}" style="margin-block-end: 0em">{{ .Attributes.Concelho }}</h4>
+                        <div class="data">
+                           <p>
+                              <div>Casos confirmados {{ .Attributes.ConfirmadosAcumuladoConc }}</div>
+                           </p>
+                           <p>
+                              <div>Casos novos {{ .Attributes.ConfirmadosNovosConc }}</div>
+                           </p>
+                           <p>
+                              <div>Última atualização {{ .Attributes.DataParsed }}</div>
+                           </p>
+                        </div>
+                     </section>
                   {{ end }}
                {{ end }}
             </div>

@@ -1,19 +1,25 @@
 package main
 
 import (
-	"strings"
-	"encoding/json"
-	"fmt"
-	"io/ioutil"
-	"log"
-	"net/http"
+  "strings"
+  "encoding/json"
+  "fmt"
+  "io/ioutil"
+  "log"
+  "net/http"
   "net/url"
-	"time"
+  "time"
   "html/template"
   "strconv"
+  "unicode"
+
+	"golang.org/x/text/transform"
+  "golang.org/x/text/unicode/norm"
 )
 
 type attributes struct {
+  Ancora bool
+  AncoraID string
   Concelho string `json:"Concelho"`
   DataConc int `json:"Data_Conc"`
   DataParsed string
@@ -160,15 +166,7 @@ type data struct {
 
 func main() {
 
-	//We tell Go exactly where we can find our html file.
-	//We ask Go to parse the html file (Notice the relative path).
-	//We wrap it in a call to template.Must() which handles any errors
-	//and halts if there are fatal errors
-   
 	 templates := template.Must(template.ParseFiles("templates/index.html", "templates/regional.html", "templates/concelho.html"))
-	 //Our HTML comes with CSS that go needs to provide when we run the app. Here we tell go to create
-   // a handle that looks in the static directory, go then uses the "/static/" as a url that our
-   //html can refer to when looking for our css and other files. 
 
 	http.Handle("/static/", //final url can be anything
 	http.StripPrefix("/static/",
@@ -176,13 +174,11 @@ func main() {
 	http.HandleFunc("/" , func(w http.ResponseWriter, r *http.Request) {
 
     covid := covidData{}
-    getCovidData(&covid)
-    concelhos := concelhosData{}
-    getCovidData2(&concelhos)
+    getCovidDataSource1(&covid)
     covid2 := covidData2{}
-    getCovidData3(&covid2)
+    getCovidDataSource3(&covid2)
 
-    data := data{Covid: covid, Concelhos: concelhos, Covid2: covid2}
+    data := data{Covid: covid, Covid2: covid2}
 
 		//If errors show an internal server error message
 		//I also pass the welcome struct to the welcome-template.html file.
@@ -193,11 +189,9 @@ func main() {
   http.HandleFunc("/regional/" , func(w http.ResponseWriter, r *http.Request) {
 
     covid := covidData{}
-    getCovidData(&covid)
-    concelhos := concelhosData{}
-    getCovidData2(&concelhos)
+    getCovidDataSource1(&covid)
 
-    data := data{Covid: covid, Concelhos: concelhos}
+    data := data{Covid: covid}
 
 		//If errors show an internal server error message
 		//I also pass the welcome struct to the welcome-template.html file.
@@ -207,12 +201,10 @@ func main() {
   })
   http.HandleFunc("/concelho/" , func(w http.ResponseWriter, r *http.Request) {
 
-    covid := covidData{}
-    getCovidData(&covid)
     concelhos := concelhosData{}
-    getCovidData2(&concelhos)
+    getCovidDataSource2(&concelhos)
 
-    data := data{Covid: covid, Concelhos: concelhos}
+    data := data{Concelhos: concelhos}
 
 		//If errors show an internal server error message
 		//I also pass the welcome struct to the welcome-template.html file.
@@ -221,36 +213,22 @@ func main() {
 		}
 	})
 
-   //Start the web server, set the port to listen to 8080. Without a path it assumes localhost
-   //Print any errors from starting the webserver using fmt
-   fmt.Println("Listening");
-	 fmt.Println(http.ListenAndServe(":1904", nil));
+  //Start the web server, set the port to listen to 8080. Without a path it assumes localhost
+  //Print any errors from starting the webserver using fmt
+  fmt.Println("Listening");
+  fmt.Println(http.ListenAndServe(":1904", nil));
 
-
-	//  lines, err := ReadCsv("covid19pt-data/data.csv")
-  //   if err != nil {
-  //       panic(err)
-  //   }
-
-  //   // Loop through lines & turn into object
-  //   for _, line := range lines {
-  //       data := CsvLine{
-  //           Column1: line[0],
-  //           Column2: line[1],
-  //       }
-  //       fmt.Println(data.Column1 + " " + data.Column2)
-  //   }
 }
 
-func getCovidData(covid *covidData){
-  // url := "https://disease.sh/v3/covid-19/countries/portugal"
-  url2 := "https://covid19-api.vost.pt/Requests/get_last_update"
+func getCovidDataSource1(covid *covidData){
+
+  url := "https://covid19-api.vost.pt/Requests/get_last_update"
 
   spaceClient := http.Client{
     Timeout: time.Second * 10, // Timeout after 10 seconds
   }
 
-  req, err := http.NewRequest(http.MethodGet, url2, nil)
+  req, err := http.NewRequest(http.MethodGet, url, nil)
   if err != nil {
     log.Fatal(err)
   }
@@ -277,7 +255,7 @@ func getCovidData(covid *covidData){
   }
 }
 
-func getCovidData2(concelhos *concelhosData){
+func getCovidDataSource2(concelhos *concelhosData){
   data := url.Values {
     "f": {"json"},
     "where": {"1=1"},
@@ -305,14 +283,25 @@ func getCovidData2(concelhos *concelhosData){
     log.Fatal(jsonErr)
   }
 
+  var currentChar = ""
+  var concelhoFirstChar = ""
   for i := 0; i < len(concelhos.Features); i++ {
     concelhos.Features[i].Attributes.Concelho = strings.Title(strings.ToLower(concelhos.Features[i].Attributes.Concelho))
     concelhos.Features[i].Attributes.DataParsed = tsToDate(concelhos.Features[i].Attributes.DataConc)
-  }
 
+    if "Vila Da Praia Da Vitória" != concelhos.Features[i].Attributes.Concelho{ //API bug on alphabetic order
+      concelhoFirstChar = removeAccents(concelhos.Features[i].Attributes.Concelho)[0:1]
+
+      if currentChar != concelhoFirstChar{
+        concelhos.Features[i].Attributes.Ancora = true
+        concelhos.Features[i].Attributes.AncoraID = "concelho-" + concelhoFirstChar
+        currentChar = concelhoFirstChar
+      }
+    }
+  }
 }
 
-func getCovidData3(covid *covidData2){
+func getCovidDataSource3(covid *covidData2){
   url := "https://disease.sh/v3/covid-19/countries/portugal"
 
   spaceClient := http.Client{
@@ -348,7 +337,6 @@ func getCovidData3(covid *covidData2){
   covid.UpdatedParsed = tsToDate(covid.Updated)
 }
 
-
 func tsToDate(ts int) string {
   s := strconv.Itoa(ts)
   if len(s) < 10 {
@@ -359,4 +347,14 @@ func tsToDate(ts int) string {
     return time.Unix(int64(n), 0).Format("2006-01-02")
   }
   return "sem informação"
+}
+
+func isMn(r rune) bool {
+  return unicode.Is(unicode.Mn, r) // Mn: nonspacing marks
+}
+
+func removeAccents(toTransform string) string {
+  t := transform.Chain(norm.NFD, transform.RemoveFunc(isMn), norm.NFC)
+  result, _, _ := transform.String(t, toTransform)
+  return result
 }

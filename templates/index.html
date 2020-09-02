@@ -9,46 +9,23 @@
 </head>
 <body>
    <div class="header">
-      <!-- <div class="hide_me">
-         <div class="hidden-navigation">
-               <ul class="main-navigation__list">
-                  <li class="main-navigation__list"><a class="main-navigation__link" href="#globais">Ir para informação global</a></li>
-                  <li class="main-navigation__list"><a class="main-navigation__link" href="#regionais">Ir para informação por região de saúde</a></li>
-                  <li class="main-navigation__list"><a class="main-navigation__link" href="#concelhos">Ir para informação por concelho</a></li>
-               </ul>
-         </div>
-      </div> -->
-
       <div class="contain header__layout">
-         <div class="nav_title">Ponto de Situação Atual em Portugal</div>
-         <div class="main-navigation">
+         <div class="nav_title">Ponto de Situação</div>
+         <nav class="main-navigation">
                <ul class="main-navigation__list">
-                  <li class="main-navigation__list"><a class="main-navigation__link" aria-label="Ir para informação global" href="#globais">Dados globais</a></li>
-                  <li class="main-navigation__list"><a class="main-navigation__link" aria-label="Ir para informação por região de saúde" href="/regional/">Dados regionais</a></li>
-                  <li class="main-navigation__list"><a class="main-navigation__link" aria-label="Ir para informação por concelho" href="/concelho/">Dados por concelho</a></li>
+                  <li class="main-navigation__list hidden__nav"><a class="skip" aria-label="Ir para dados globais" href="#globais" ></a></li>
+                  <li class="main-navigation__list hidden__nav"><a class="skip" aria-label="Ir para dados detalhados" href="#detalhados" ></a></li>
+                  <li class="main-navigation__list"><a class="main-navigation__link current" aria-label="Ir para informação global" href="#globais" aria-current="page">Dados globais</a></li>
+                  <li class="main-navigation__list"><a class="main-navigation__link" aria-label="Navegar para informação por região de saúde" href="/regional/">Dados regionais</a></li>
+                  <li class="main-navigation__list"><a class="main-navigation__link" aria-label="Navegar para informação por concelho" href="/concelho/">Dados por concelho</a></li>
                </ul>
-         </div>
+         </nav>
       </div>
     </div>
     <div class="main">
       <div class="contain">
-         <h2>Dados globais</h2>
-         <div id="globais" class="data">
-            <!-- <p>
-               <div>Casos ativos {{.Covid.Ativos}}</div>
-            </p>
-            <p>
-               <div>Casos recuperados {{.Covid.Recuperados}}</div>
-            </p>
-            <p>
-               <div>Óbitos {{.Covid.Obitos}}</div>
-            </p>
-            <p>
-               <div>Casos confirmados {{.Covid.Confirmados}}</div>
-            </p>
-            <p>
-               <div>Dados relativos ao boletim da DGS de {{.Covid.DataDados}}</div>
-            </p> -->
+         <section id="globais" class="data" aria-labelledby="globais-label">
+            <h2 id="globais-label">Dados globais</h2>
             <p>
                <div>Casos ativos {{.Covid2.Active}}</div>
             </p>
@@ -97,9 +74,9 @@
             <p>
                <div>Dados relativos ao boletim da DGS de {{.Covid2.UpdatedParsed}}</div>
             </p>
-         </div>
-         <h2>Dados detalhados</h2>
-         <div id="detalhados" class="data">
+         </section>
+         <section id="detalhados" class="data" aria-labelledby="detalhados-label">
+            <h2 id="detalhados-label">Dados detalhados</h2>
             <p>
                <div>Número total de confirmados do sexo feminino {{.Covid.ConfirmadosF}}</div>
             </p>
@@ -165,7 +142,7 @@
                <div>Percentagem de casos infetados que reportaram o sintoma Fraqueza generalizada. {{.Covid.SintomasFraquezaGeneralizada}}</div>
                <div>Nota: conforme informa a DGS, estes dados são relativos apenas a uma %, não-especificada e variável, dos infectados.</div>
             </p>
-         </div>
+         </section>
       </div>
     </div>
 

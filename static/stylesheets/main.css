@@ -4,6 +4,27 @@ body {
     padding: 0;
 }
 
+nav a{
+    color: #fff;
+    text-decoration: none;
+}
+
+.current{
+    color: #fff;
+    text-decoration: underline;
+}
+
+nav a:hover,
+nav a:focus {
+	color: #fff;
+	text-decoration: underline;
+}
+
+nav a:active {
+	color: #fff;
+	text-decoration: underline;
+}
+
 .header {
     background-color: #343a40;
     color: #fff;
@@ -26,11 +47,6 @@ body {
     margin-top: 0;
     margin-bottom: 0;
 }
-
-.main-navigation__link {
-    color: #fff;
-}
-
 
 .contain {
     width: 95%;
@@ -72,6 +88,7 @@ body {
     position: absolute !important;
     height: 1px;
     width: 1px;
+    margin: 0;
     overflow: hidden;
     word-wrap: normal !important; /* Many screen reader and browser combinations announce broken words as they would appear visually. */
 }
@@ -94,8 +111,34 @@ body {
     z-index: 100000;
 }
 
+.hidden__nav {
+    margin: 0;
+}
 
 .search {
     background-color: lightgray;
     padding: 1em 0 3em;
+}
+
+ul#index li {
+    display:inline;
+  }
+
+ul#index li a{
+ color: #000;
+}
+
+#index__container{
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 2em;
+}
+
+#index-label{
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+}
+
+#index{
+    padding-inline-start: 20px;
 }
