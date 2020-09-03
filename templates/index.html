@@ -27,120 +27,111 @@
          <section id="globais" class="data" aria-labelledby="globais-label">
             <h2 id="globais-label">Dados globais</h2>
             <p>
-               <div>Casos ativos {{.Covid2.Active}}</div>
+               <div>Casos ativos {{.Ativos}}</div>
             </p>
             <p>
-               <div>Casos recuperados {{.Covid2.Recovered}}</div>
+               <div>Casos recuperados {{.Recuperados}}</div>
             </p>
             <p>
-               <div>Óbitos {{.Covid2.Deaths}}</div>
+               <div>Óbitos {{.Obitos}}</div>
             </p>
             <p>
-               <div>Casos confirmados {{.Covid2.Cases}}</div>
+               <div>Casos confirmados {{.Confirmados}}</div>
             </p>
             <p>
-               <div>Novos casos {{.Covid2.TodayCases}}</div>
+               <div>Novos casos {{.ConfirmadosNovos}}</div>
             </p>
             <p>
-               <div>Novos recuperados {{.Covid2.TodayRecovered}}</div>
+               <div>Novos recuperados {{.TodayRecovered}}</div>
             </p>
             <p>
-               <div>Novos óbitos {{.Covid2.TodayDeaths}}</div>
+               <div>Novos óbitos {{.TodayDeaths}}</div>
             </p>
             <p>
-               <div>Testes realizados {{.Covid2.Tests}}</div>
+               <div>Testes realizados {{.Tests}}</div>
             </p>
             <p>
-               <div>Número de casos sob vigilância pelas autoridades de saúde {{.Covid.Vigilancia}}</div>
+               <div>Número de casos sob vigilância pelas autoridades de saúde {{.Vigilancia}}</div>
             </p>
             <p>
-               <div>Número de pacientes COVID-19 internados em Unidades de Cuidados Intensivos {{.Covid.Internados}}</div>
+               <div>Número de pacientes COVID-19 internados em Unidades de Cuidados Intensivos {{.Internados}}</div>
             </p>
             <p>
-               <div>Casos ativos por milhão de habitantes {{.Covid2.ActivePerOneMillion}}</div>
+               <div>Casos ativos por milhão de habitantes {{.ActivePerOneMillion}}</div>
             </p>
             <p>
-               <div>Casos recuperados por milhão de habitantes {{.Covid2.RecoveredPerOneMillion}}</div>
+               <div>Casos recuperados por milhão de habitantes {{.RecoveredPerOneMillion}}</div>
             </p>
             <p>
-               <div>Óbitos por milhão de habitantes {{.Covid2.DeathsPerOneMillion}}</div>
+               <div>Óbitos por milhão de habitantes {{.DeathsPerOneMillion}}</div>
             </p>
             <p>
-               <div>Casos confrimados por milhão de habitantes {{.Covid2.CasesPerOneMillion}}</div>
+               <div>Casos confrimados por milhão de habitantes {{.CasesPerOneMillion}}</div>
             </p>
             <p>
-               <div>Testes realizados por milhão de habitantes {{.Covid2.TestsPerOneMillion}}</div>
+               <div>Testes realizados por milhão de habitantes {{.TestsPerOneMillion}}</div>
             </p>
             <p>
-               <div>Dados relativos ao boletim da DGS de {{.Covid2.UpdatedParsed}}</div>
+               <div>Dados relativos ao boletim da DGS de {{.DataDados}}</div>
             </p>
          </section>
          <section id="detalhados" class="data" aria-labelledby="detalhados-label">
             <h2 id="detalhados-label">Dados detalhados</h2>
             <p>
-               <div>Número total de confirmados do sexo feminino {{.Covid.ConfirmadosF}}</div>
+               <div>Número total de confirmados do sexo feminino {{.ConfirmadosF}}</div>
             </p>
             <p>
-               <div>Número total de confirmados do sexo masculino {{.Covid.ConfirmadosM}}</div>
+               <div>Número total de confirmados do sexo masculino {{.ConfirmadosM}}</div>
             </p>
             <p>
-               <div>Número de casos confirmados do sexo feminino na faixa etária 0-9 anos {{.Covid.Confirmados09f}}</div>
-               <div>Número de casos confirmados do sexo feminino na faixa etária 10-19 anos {{.Covid.Confirmados1019f}}</div>
-               <div>Número de casos confirmados do sexo feminino na faixa etária 20-29 anos {{.Covid.Confirmados2029f}}</div>
-               <div>Número de casos confirmados do sexo feminino na faixa etária 30-39 anos {{.Covid.Confirmados3039f}}</div>
-               <div>Número de casos confirmados do sexo feminino na faixa etária 40-49 anos {{.Covid.Confirmados4049f}}</div>
-               <div>Número de casos confirmados do sexo feminino na faixa etária 50-59 anos {{.Covid.Confirmados5059f}}</div>
-               <div>Número de casos confirmados do sexo feminino na faixa etária 60-69 anos {{.Covid.Confirmados6069f}}</div>
-               <div>Número de casos confirmados do sexo feminino na faixa etária 70-79 anos {{.Covid.Confirmados7079f}}</div>
-               <div>Número de casos confirmados do sexo feminino na faixa etária 80+ anos {{.Covid.Confirmados80Plusf}}</div>
+               <div>Número de casos confirmados do sexo feminino na faixa etária 0-9 anos {{.Confirmados09f}}</div>
+               <div>Número de casos confirmados do sexo feminino na faixa etária 10-19 anos {{.Confirmados1019f}}</div>
+               <div>Número de casos confirmados do sexo feminino na faixa etária 20-29 anos {{.Confirmados2029f}}</div>
+               <div>Número de casos confirmados do sexo feminino na faixa etária 30-39 anos {{.Confirmados3039f}}</div>
+               <div>Número de casos confirmados do sexo feminino na faixa etária 40-49 anos {{.Confirmados4049f}}</div>
+               <div>Número de casos confirmados do sexo feminino na faixa etária 50-59 anos {{.Confirmados5059f}}</div>
+               <div>Número de casos confirmados do sexo feminino na faixa etária 60-69 anos {{.Confirmados6069f}}</div>
+               <div>Número de casos confirmados do sexo feminino na faixa etária 70-79 anos {{.Confirmados7079f}}</div>
+               <div>Número de casos confirmados do sexo feminino na faixa etária 80+ anos {{.Confirmados80Plusf}}</div>
             </p>
             <p>
-               <div>Número de casos confirmados do sexo masculino na faixa etária 0-9 anos {{.Covid.Confirmados09m}}</div>
-               <div>Número de casos confirmados do sexo masculino na faixa etária 10-19 anos {{.Covid.Confirmados1019m}}</div>
-               <div>Número de casos confirmados do sexo masculino na faixa etária 20-29 anos {{.Covid.Confirmados2029m}}</div>
-               <div>Número de casos confirmados do sexo masculino na faixa etária 30-39 anos {{.Covid.Confirmados3039m}}</div>
-               <div>Número de casos confirmados do sexo masculino na faixa etária 40-49 anos {{.Covid.Confirmados4049m}}</div>
-               <div>Número de casos confirmados do sexo masculino na faixa etária 50-59 anos {{.Covid.Confirmados5059m}}</div>
-               <div>Número de casos confirmados do sexo masculino na faixa etária 60-69 anos {{.Covid.Confirmados6069m}}</div>
-               <div>Número de casos confirmados do sexo masculino na faixa etária 70-79 anos {{.Covid.Confirmados7079m}}</div>
-               <div>Número de casos confirmados do sexo masculino na faixa etária 80+ anos {{.Covid.Confirmados80Plusm}}</div>
+               <div>Número de casos confirmados do sexo masculino na faixa etária 0-9 anos {{.Confirmados09m}}</div>
+               <div>Número de casos confirmados do sexo masculino na faixa etária 10-19 anos {{.Confirmados1019m}}</div>
+               <div>Número de casos confirmados do sexo masculino na faixa etária 20-29 anos {{.Confirmados2029m}}</div>
+               <div>Número de casos confirmados do sexo masculino na faixa etária 30-39 anos {{.Confirmados3039m}}</div>
+               <div>Número de casos confirmados do sexo masculino na faixa etária 40-49 anos {{.Confirmados4049m}}</div>
+               <div>Número de casos confirmados do sexo masculino na faixa etária 50-59 anos {{.Confirmados5059m}}</div>
+               <div>Número de casos confirmados do sexo masculino na faixa etária 60-69 anos {{.Confirmados6069m}}</div>
+               <div>Número de casos confirmados do sexo masculino na faixa etária 70-79 anos {{.Confirmados7079m}}</div>
+               <div>Número de casos confirmados do sexo masculino na faixa etária 80+ anos {{.Confirmados80Plusm}}</div>
             </p>
             <p>
-               <div>Número total de óbitos de pacientes do sexo feminino {{.Covid.ObitosF}}</div>
+               <div>Número total de óbitos de pacientes do sexo feminino {{.ObitosF}}</div>
             </p>
             <p>
-               <div>Número total de óbitos de pacientes do sexo masculino {{.Covid.ObitosM}}</div>
+               <div>Número total de óbitos de pacientes do sexo masculino {{.ObitosM}}</div>
             </p>
             <p>
-               <div>Número total de óbitos de pacientes do sexo feminino na faixa etária 0-9 anos {{.Covid.Obitos09f}}</div>
-               <div>Número total de óbitos de pacientes do sexo feminino na faixa etária 10-19 anos {{.Covid.Obitos1019f}}</div>
-               <div>Número total de óbitos de pacientes do sexo feminino na faixa etária 20-29 anos {{.Covid.Obitos2029f}}</div>
-               <div>Número total de óbitos de pacientes do sexo feminino na faixa etária 30-39 anos {{.Covid.Obitos3039f}}</div>
-               <div>Número total de óbitos de pacientes do sexo feminino na faixa etária 40-49 anos {{.Covid.Obitos4049f}}</div>
-               <div>Número total de óbitos de pacientes do sexo feminino na faixa etária 50-59 anos {{.Covid.Obitos5059f}}</div>
-               <div>Número total de óbitos de pacientes do sexo feminino na faixa etária 60-69 anos {{.Covid.Obitos6069f}}</div>
-               <div>Número total de óbitos de pacientes do sexo feminino na faixa etária 70-79 anos {{.Covid.Obitos7079f}}</div>
-               <div>Número total de óbitos de pacientes do sexo feminino na faixa etária 80+ anos {{.Covid.Obitos80Plusf}}</div>
+               <div>Número total de óbitos de pacientes do sexo feminino na faixa etária 0-9 anos {{.Obitos09f}}</div>
+               <div>Número total de óbitos de pacientes do sexo feminino na faixa etária 10-19 anos {{.Obitos1019f}}</div>
+               <div>Número total de óbitos de pacientes do sexo feminino na faixa etária 20-29 anos {{.Obitos2029f}}</div>
+               <div>Número total de óbitos de pacientes do sexo feminino na faixa etária 30-39 anos {{.Obitos3039f}}</div>
+               <div>Número total de óbitos de pacientes do sexo feminino na faixa etária 40-49 anos {{.Obitos4049f}}</div>
+               <div>Número total de óbitos de pacientes do sexo feminino na faixa etária 50-59 anos {{.Obitos5059f}}</div>
+               <div>Número total de óbitos de pacientes do sexo feminino na faixa etária 60-69 anos {{.Obitos6069f}}</div>
+               <div>Número total de óbitos de pacientes do sexo feminino na faixa etária 70-79 anos {{.Obitos7079f}}</div>
+               <div>Número total de óbitos de pacientes do sexo feminino na faixa etária 80+ anos {{.Obitos80Plusf}}</div>
             </p>
             <p>
-               <div>Número total de óbitos de pacientes do sexo masculino na faixa etária 0-9 anos {{.Covid.Obitos09m}}</div>
-               <div>Número total de óbitos de pacientes do sexo masculino na faixa etária 10-19 anos {{.Covid.Obitos1019m}}</div>
-               <div>Número total de óbitos de pacientes do sexo masculino na faixa etária 20-29 anos {{.Covid.Obitos2029m}}</div>
-               <div>Número total de óbitos de pacientes do sexo masculino na faixa etária 30-39 anos {{.Covid.Obitos3039m}}</div>
-               <div>Número total de óbitos de pacientes do sexo masculino na faixa etária 40-49 anos {{.Covid.Obitos4049m}}</div>
-               <div>Número total de óbitos de pacientes do sexo masculino na faixa etária 50-59 anos {{.Covid.Obitos5059m}}</div>
-               <div>Número total de óbitos de pacientes do sexo masculino na faixa etária 60-69 anos {{.Covid.Obitos6069m}}</div>
-               <div>Número total de óbitos de pacientes do sexo masculino na faixa etária 70-79 anos {{.Covid.Obitos7079m}}</div>
-               <div>Número total de óbitos de pacientes do sexo masculino na faixa etária 80+ anos {{.Covid.Obitos80Plusm}}</div>
-            </p>
-            <p>
-               <div>Percentagem de casos infetados que reportaram o sintoma Tosse. {{.Covid.SintomasTosse}}</div>
-               <div>Percentagem de casos infetados que reportaram o sintoma Febre. {{.Covid.SintomasFebre}}</div>
-               <div>Percentagem de casos infetados que reportaram o sintoma Dificuldades respiratórias. {{.Covid.SintomasDificuldadeRespiratoria}}</div>
-               <div>Percentagem de casos infetados que reportaram o sintoma Cefaleias. {{.Covid.SintomasCefaleia}}</div>
-               <div>Percentagem de casos infetados que reportaram o sintoma Dores musculares. {{.Covid.SintomasDoresMusculares}}</div>
-               <div>Percentagem de casos infetados que reportaram o sintoma Fraqueza generalizada. {{.Covid.SintomasFraquezaGeneralizada}}</div>
-               <div>Nota: conforme informa a DGS, estes dados são relativos apenas a uma %, não-especificada e variável, dos infectados.</div>
+               <div>Número total de óbitos de pacientes do sexo masculino na faixa etária 0-9 anos {{.Obitos09m}}</div>
+               <div>Número total de óbitos de pacientes do sexo masculino na faixa etária 10-19 anos {{.Obitos1019m}}</div>
+               <div>Número total de óbitos de pacientes do sexo masculino na faixa etária 20-29 anos {{.Obitos2029m}}</div>
+               <div>Número total de óbitos de pacientes do sexo masculino na faixa etária 30-39 anos {{.Obitos3039m}}</div>
+               <div>Número total de óbitos de pacientes do sexo masculino na faixa etária 40-49 anos {{.Obitos4049m}}</div>
+               <div>Número total de óbitos de pacientes do sexo masculino na faixa etária 50-59 anos {{.Obitos5059m}}</div>
+               <div>Número total de óbitos de pacientes do sexo masculino na faixa etária 60-69 anos {{.Obitos6069m}}</div>
+               <div>Número total de óbitos de pacientes do sexo masculino na faixa etária 70-79 anos {{.Obitos7079m}}</div>
+               <div>Número total de óbitos de pacientes do sexo masculino na faixa etária 80+ anos {{.Obitos80Plusm}}</div>
             </p>
          </section>
       </div>

@@ -41,7 +41,7 @@ type concelhosData struct {
   Features []features `json:"features"`
 }
 
-type covidData2 struct {
+type covidData struct {
 	Number int `json:"number"`
 	UpdatedParsed string
 	Updated int `json:"updated"`
@@ -66,9 +66,6 @@ type covidData2 struct {
   ActivePerOneMillion float64 `json:"activePerOneMillion"`
   RecoveredPerOneMillion float64 `json:"recoveredPerOneMillion"`
   CriticalPerOneMillion float64 `json:"criticalPerOneMillion"`
-}
-
-type covidData struct {
 	Data string `json:"data"`
 	DataDados string `json:"data_dados"`
 	Confirmados float64 `json:"confirmados"`
@@ -161,7 +158,7 @@ type covidData struct {
 type data struct {
   Covid covidData
   Concelhos concelhosData
-  Covid2 covidData2
+  Covid2 covidData
 }
 
 func main() {
@@ -174,28 +171,34 @@ func main() {
 	http.HandleFunc("/" , func(w http.ResponseWriter, r *http.Request) {
 
     covid := covidData{}
-    getCovidDataSource1(&covid)
-    covid2 := covidData2{}
-    getCovidDataSource3(&covid2)
+    getCovidData(&covid, "https://covid19-api.vost.pt/Requests/get_last_update")
 
-    data := data{Covid: covid, Covid2: covid2}
+    loc, _ := time.LoadLocation("GMT")
+    currentTime := time.Now().In(loc)
+    t, _ := time.ParseInLocation("02-01-2006 15:04", covid.DataDados, loc) //WTF must be that exat date and time
+
+
+    if currentTime.Day() > t.Day(){//dados de ontem
+      getCovidData(&covid, "https://disease.sh/v3/covid-19/countries/portugal?yesterday=true")
+    }else{//dados de hoje
+      getCovidData(&covid, "https://disease.sh/v3/covid-19/countries/portugal")
+
+    }
 
 		//If errors show an internal server error message
 		//I also pass the welcome struct to the welcome-template.html file.
-		if err := templates.ExecuteTemplate(w, "index.html", data); err != nil {
+		if err := templates.ExecuteTemplate(w, "index.html", covid); err != nil {
 				http.Error(w, err.Error(), http.StatusInternalServerError)
 		}
   })
   http.HandleFunc("/regional/" , func(w http.ResponseWriter, r *http.Request) {
 
     covid := covidData{}
-    getCovidDataSource1(&covid)
-
-    data := data{Covid: covid}
+    getCovidData(&covid, "https://covid19-api.vost.pt/Requests/get_last_update")
 
 		//If errors show an internal server error message
 		//I also pass the welcome struct to the welcome-template.html file.
-		if err := templates.ExecuteTemplate(w, "regional.html", data); err != nil {
+		if err := templates.ExecuteTemplate(w, "regional.html", covid); err != nil {
 				http.Error(w, err.Error(), http.StatusInternalServerError)
 		}
   })
@@ -220,9 +223,7 @@ func main() {
 
 }
 
-func getCovidDataSource1(covid *covidData){
-
-  url := "https://covid19-api.vost.pt/Requests/get_last_update"
+func getCovidData(covid *covidData, url string){
 
   spaceClient := http.Client{
     Timeout: time.Second * 10, // Timeout after 10 seconds
@@ -232,8 +233,6 @@ func getCovidDataSource1(covid *covidData){
   if err != nil {
     log.Fatal(err)
   }
-
-  //req.Header.Set("User-Agent", "spacecount-tutorial")
 
   res, getErr := spaceClient.Do(req)
   if getErr != nil {
@@ -253,6 +252,13 @@ func getCovidDataSource1(covid *covidData){
   if jsonErr != nil {
     log.Fatal(jsonErr)
   }
+
+  if strings.Contains(url, "disease.sh"){
+    covid.UpdatedParsed = tsToDate(covid.Updated)
+  }else{
+    covid.DataDados = covid.DataDados[0:10]
+  }
+
 }
 
 func getCovidDataSource2(concelhos *concelhosData){
@@ -299,42 +305,6 @@ func getCovidDataSource2(concelhos *concelhosData){
       }
     }
   }
-}
-
-func getCovidDataSource3(covid *covidData2){
-  url := "https://disease.sh/v3/covid-19/countries/portugal"
-
-  spaceClient := http.Client{
-    Timeout: time.Second * 10, // Timeout after 10 seconds
-  }
-
-  req, err := http.NewRequest(http.MethodGet, url, nil)
-  if err != nil {
-    log.Fatal(err)
-  }
-
-  //req.Header.Set("User-Agent", "spacecount-tutorial")
-
-  res, getErr := spaceClient.Do(req)
-  if getErr != nil {
-    log.Fatal(getErr)
-  }
-
-  if res.Body != nil {
-    defer res.Body.Close()
-  }
-
-  body, readErr := ioutil.ReadAll(res.Body)
-  if readErr != nil {
-    log.Fatal(readErr)
-  }
-
-  jsonErr := json.Unmarshal(body, &covid)
-  if jsonErr != nil {
-    log.Fatal(jsonErr)
-  }
-
-  covid.UpdatedParsed = tsToDate(covid.Updated)
 }
 
 func tsToDate(ts int) string {
