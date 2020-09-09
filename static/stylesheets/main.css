@@ -143,3 +143,9 @@ ul#index li a{
 #index{
     padding-inline-start: 20px;
 }
+
+ul#page-navigation{
+    padding-left: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}

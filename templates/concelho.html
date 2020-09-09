@@ -19,13 +19,18 @@
    <div class="header">
       <div class="contain header__layout">
          <div class="nav_title">Ponto de Situação</div>
+         <nav>
+            <ul aria-labelledby="page_menu_label" style="padding-left: 0px; margin-top: 0px; margin-bottom: 0px;">
+               <h2 id="page_menu_label" class="skip">Menu de navegação da página</h2>
+               <li class="main-navigation__list hidden__nav"><a class="skip" aria-label="Índice de navegação" href="#index__container" ></a></li>
+            </ul>
+         </nav>
          <nav class="main-navigation">
-               <ul class="main-navigation__list">
-                  <li class="main-navigation__list hidden__nav"><a class="skip" aria-label="Ir para o índice de navegação" href="#index__container" ></a></li>
-                  <li class="main-navigation__list hidden__nav"><a class="skip" aria-label="Ir para o início do conteúdo" href="#concelho" ></a></li>
-                  <li class="main-navigation__list"><a class="main-navigation__link" aria-label="Ir para informação global" href="/">Dados globais</a></li>
-                  <li class="main-navigation__list"><a class="main-navigation__link" aria-label="Ir para informação por região de saúde" href="/regional">Dados regionais</a></li>
-                  <li class="main-navigation__list"><a class="main-navigation__link current" aria-label="Ir para informação por concelho" href="#concelho" aria-current="page">Dados por concelho</a></li>
+               <ul aria-labelledby="main_menu_label" class="main-navigation__list">
+                  <h2 id="main_menu_label" class="skip">Menu de navegação principal</h2>
+                  <li class="main-navigation__list"><a class="main-navigation__link" aria-label="Informação global" href="/">Dados globais</a></li>
+                  <li class="main-navigation__list"><a class="main-navigation__link" aria-label="Informação por região de saúde" href="/regional/">Dados regionais</a></li>
+                  <li class="main-navigation__list"><a class="main-navigation__link current" aria-label="Página atual: Informação por concelho" href="/concelho/" aria-current="page">Dados por concelho</a></li>
                </ul>
          </nav>
       </div>

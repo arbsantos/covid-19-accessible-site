@@ -19,13 +19,19 @@
    <div class="header">
       <div class="contain header__layout">
          <div class="nav_title">Ponto de Situação</div>
+         <nav>
+            <ul aria-labelledby="page_menu_label" style="padding-left: 0px; margin-top: 0px; margin-bottom: 0px;">
+               <h2 id="page_menu_label" class="skip">Menu de navegação da página</h2>
+               <li class="main-navigation__list hidden__nav"><a class="skip" aria-label="Dados globais" href="#globais" ></a></li>
+               <li class="main-navigation__list hidden__nav"><a class="skip" aria-label="Dados detalhados" href="#detalhados" ></a></li>
+            </ul>
+         </nav>
          <nav class="main-navigation">
-               <ul class="main-navigation__list">
-                  <li class="main-navigation__list hidden__nav"><a class="skip" aria-label="Ir para dados globais" href="#globais" ></a></li>
-                  <li class="main-navigation__list hidden__nav"><a class="skip" aria-label="Ir para dados detalhados" href="#detalhados" ></a></li>
-                  <li class="main-navigation__list"><a class="main-navigation__link current" aria-label="Ir para informação global" href="#globais" aria-current="page">Dados globais</a></li>
-                  <li class="main-navigation__list"><a class="main-navigation__link" aria-label="Navegar para informação por região de saúde" href="/regional/">Dados regionais</a></li>
-                  <li class="main-navigation__list"><a class="main-navigation__link" aria-label="Navegar para informação por concelho" href="/concelho/">Dados por concelho</a></li>
+               <ul aria-labelledby="main_menu_label" class="main-navigation__list">
+                  <h2 id="main_menu_label" class="skip">Menu de navegação principal</h2>
+                  <li class="main-navigation__list"><a class="main-navigation__link current" aria-label="Página atual: Informação global" href="/" aria-current="page">Dados globais</a></li>
+                  <li class="main-navigation__list"><a class="main-navigation__link" aria-label="Informação por região de saúde" href="/regional/">Dados regionais</a></li>
+                  <li class="main-navigation__list"><a class="main-navigation__link" aria-label="Informação por concelho" href="/concelho/">Dados por concelho</a></li>
                </ul>
          </nav>
       </div>
